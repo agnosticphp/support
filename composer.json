@@ -12,7 +12,6 @@
         "php": ">=5.4.0"
     },
     "require-dev": {
-        "jeremeamia/superclosure": "~1.0.1",
         "patchwork/utf8": "1.1.*"
     },
     "minimum-stability": "dev",

@@ -1,17 +1,22 @@
 <?php namespace AgnosticPhp\Support;
 
-use Closure;
-use Countable;
+use AgnosticPhp\Support\Contracts\ArrayableInterface;
+use AgnosticPhp\Support\Contracts\JsonableInterface;
 use ArrayAccess;
 use ArrayIterator;
 use CachingIterator;
-use JsonSerializable;
+use Closure;
+use Countable;
 use IteratorAggregate;
-use AgnosticPhp\Support\Contracts\JsonableInterface;
-use AgnosticPhp\Support\Contracts\ArrayableInterface;
+use JsonSerializable;
 
-class Collection implements ArrayAccess, ArrayableInterface, Countable, IteratorAggregate, JsonableInterface, JsonSerializable {
-
+class Collection implements ArrayAccess,
+                            ArrayableInterface,
+                            Countable,
+                            IteratorAggregate,
+                            JsonableInterface,
+                            JsonSerializable
+{
     /**
      * The items contained in the collection.
      *
@@ -93,7 +98,8 @@ class Collection implements ArrayAccess, ArrayableInterface, Countable, Iterator
     /**
      * Diff the collection with the given items.
      *
-     * @param  \AgnosticPhp\Support\Collection|\AgnosticPhp\Support\Contracts\ArrayableInterface|array  $items
+     * @param  Collection|ArrayableInterface|array $items
+     *
      * @return static
      */
     public function diff($items)
@@ -104,7 +110,7 @@ class Collection implements ArrayAccess, ArrayableInterface, Countable, Iterator
     /**
      * Execute a callback over each item.
      *
-     * @param  \Closure  $callback
+     * @param  Closure  $callback
      * @return $this
      */
     public function each(Closure $callback)
@@ -128,7 +134,7 @@ class Collection implements ArrayAccess, ArrayableInterface, Countable, Iterator
     /**
      * Run a filter over each of the items.
      *
-     * @param  \Closure  $callback
+     * @param  Closure  $callback
      * @return static
      */
     public function filter(Closure $callback)
@@ -139,7 +145,7 @@ class Collection implements ArrayAccess, ArrayableInterface, Countable, Iterator
     /**
      * Get the first item from the collection.
      *
-     * @param  \Closure   $callback
+     * @param  Closure    $callback
      * @param  mixed      $default
      * @return mixed|null
      */
@@ -305,7 +311,7 @@ class Collection implements ArrayAccess, ArrayableInterface, Countable, Iterator
     /**
      * Intersect the collection with the given items.
      *
-     * @param  \AgnosticPhp\Support\Collection|\AgnosticPhp\Support\Contracts\ArrayableInterface|array  $items
+     * @param  Collection|ArrayableInterface|array  $items
      * @return static
      */
     public function intersect($items)
@@ -358,7 +364,7 @@ class Collection implements ArrayAccess, ArrayableInterface, Countable, Iterator
     /**
      * Run a map over each of the items.
      *
-     * @param  \Closure  $callback
+     * @param  Closure  $callback
      * @return static
      */
     public function map(Closure $callback)
@@ -369,7 +375,7 @@ class Collection implements ArrayAccess, ArrayableInterface, Countable, Iterator
     /**
      * Merge the collection with the given items.
      *
-     * @param  \AgnosticPhp\Support\Collection|\AgnosticPhp\Support\Contracts\ArrayableInterface|array  $items
+     * @param  Collection|ArrayableInterface|array  $items
      * @return static
      */
     public function merge($items)
@@ -463,7 +469,7 @@ class Collection implements ArrayAccess, ArrayableInterface, Countable, Iterator
     /**
      * Create a collection of all elements that do not pass a given truth test.
      *
-     * @param  \Closure|mixed  $callback
+     * @param  Closure|mixed  $callback
      * @return static
      */
     public function reject($callback)
@@ -561,7 +567,7 @@ class Collection implements ArrayAccess, ArrayableInterface, Countable, Iterator
     /**
      * Sort through each item with a callback.
      *
-     * @param  \Closure  $callback
+     * @param  Closure  $callback
      * @return $this
      */
     public function sort(Closure $callback)
@@ -574,7 +580,7 @@ class Collection implements ArrayAccess, ArrayableInterface, Countable, Iterator
     /**
      * Sort the collection using the given Closure.
      *
-     * @param  \Closure|string  $callback
+     * @param  Closure|string  $callback
      * @param  int   $options
      * @param  bool  $descending
      * @return $this
@@ -613,7 +619,7 @@ class Collection implements ArrayAccess, ArrayableInterface, Countable, Iterator
     /**
      * Sort the collection in descending order using the given Closure.
      *
-     * @param  \Closure|string  $callback
+     * @param  Closure|string  $callback
      * @param  int  $options
      * @return $this
      */
@@ -638,7 +644,7 @@ class Collection implements ArrayAccess, ArrayableInterface, Countable, Iterator
     /**
      * Get the sum of the given values.
      *
-     * @param  \Closure  $callback
+     * @param  Closure  $callback
      * @return mixed
      */
     public function sum($callback)
@@ -671,7 +677,7 @@ class Collection implements ArrayAccess, ArrayableInterface, Countable, Iterator
     /**
      * Transform each item in the collection using a callback.
      *
-     * @param  \Closure  $callback
+     * @param  Closure  $callback
      * @return $this
      */
     public function transform(Closure $callback)
@@ -707,7 +713,7 @@ class Collection implements ArrayAccess, ArrayableInterface, Countable, Iterator
      * Get a value retrieving callback.
      *
      * @param  string  $value
-     * @return \Closure
+     * @return Closure
      */
     protected function valueRetriever($value)
     {
@@ -848,7 +854,7 @@ class Collection implements ArrayAccess, ArrayableInterface, Countable, Iterator
     /**
      * Results array of items from Collection or ArrayableInterface.
      *
-     * @param  \AgnosticPhp\Support\Collection|\AgnosticPhp\Support\Contracts\ArrayableInterface|array  $items
+     * @param  Collection|ArrayableInterface|array  $items
      * @return array
      */
     protected function getArrayableItems($items)
@@ -864,5 +870,4 @@ class Collection implements ArrayAccess, ArrayableInterface, Countable, Iterator
 
         return $items;
     }
-
 }

@@ -185,6 +185,26 @@ class Collection implements ArrayAccess, ArrayableInterface, Countable, Iterator
     }
 
     /**
+     * Remove an item from the collection.
+     *
+     * @param $mixed $item
+     *
+     * @return bool
+     */
+    public function forgetItem($item)
+    {
+        $key = array_search($item, $this->items, true);
+
+        if ($key === false) {
+            return false;
+        }
+
+        unset($this->items[$key]);
+
+        return true;
+    }
+
+    /**
      * Get an item from the collection by key.
      *
      * @param  mixed  $key
